@@ -14,7 +14,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::select('id', 'name', 'email')->get();
+
+        return View('users.index', compact('users'));
     }
 
     /**
@@ -80,6 +82,16 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        if ($user->id == auth()->user()->id) {
+            session()->flash('error', 'Não deve ser possível o usuário se excluir');
+
+            return redirect()->route('users.index');
+        }
+
+        $user->delete();
+
+        session()->flash('success', 'Usuário deletado com sucesso !');
+
+        return redirect()->route('users.index');
     }
 }

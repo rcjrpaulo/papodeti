@@ -15,7 +15,7 @@
         </div>
 
         <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" {{ $user->is_admin ? 'checked' : '' }}>
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" {{ $user->is_admin ? 'checked' : '' }} disabled>
             <label class="form-check-label" for="flexCheckChecked">
                 É admin ?
             </label>

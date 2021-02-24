@@ -20,13 +20,13 @@ use Illuminate\Database\Seeder;
             'password' => Hash::make('admin'),
         ]);
 
-        // Create a single App\User instance...
+        // Create a single App\Models\User instance...
         $user = factory(App\Models\User::class)->create([
             'is_admin' => 0,
             'password' => Hash::make('admin'),
         ]);
 
-        // Create three App\User instances...
+        // Create three App\Models\User instances...
         $users = factory(App\Models\User::class, 10)->create([
             'password' => Hash::make('admin'),
         ]);

@@ -38,7 +38,9 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        Article::create($request->only('title', 'content', 'user_id'));
+        $createData = $request->only('title', 'content', 'user_id');
+        $createData['user_id'] = auth()->user()->id;
+        Article::create($createData);
 
         session()->flash('success', 'Artigo criado com sucesso !');
 

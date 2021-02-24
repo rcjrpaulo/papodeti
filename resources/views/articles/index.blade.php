@@ -4,6 +4,8 @@
     <div class="container">
         <h1>Artigos</h1>
 
+        <a href="{{ route('articles.create') }}" class="btn btn-primary my-3">Criar</a>
+
         <table class="table table-hover table-striped">
             <thead>
             <tr>

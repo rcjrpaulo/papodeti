@@ -3,10 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ArticleCategoryController extends Controller
 {
+
+    /**
+     * @param  Article  $article
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit(Article $article)
+    {
+        $categories = Category::select('id', 'name')->get();
+        $article->load('categories');
+
+        return view('article_categories.edit', compact('article', 'categories'));
+    }
+
+
     /**
      * Update the specified resource in storage.
      *
@@ -20,6 +35,6 @@ class ArticleCategoryController extends Controller
 
         session()->flash('success', 'Artigo atualizado com sucesso !');
 
-        return redirect()->route('articles.index');
+        return redirect()->route('article_categories.edit', $article->id);
     }
 }

@@ -28,6 +28,9 @@
 
                             <button class="btn btn-danger" type="submit">Apagar</button>
                         </form>
+                        <a href="{{ route('category_articles.edit', $category->id) }}" class="btn btn-primary">
+                            Artigos
+                        </a>
                     </td>
                 </tr>
             @endforeach

@@ -27,6 +27,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('comments', 'CommentController');
     Route::resource('users', 'UserController');
 
+    Route::get('article_categories/{article}/edit', 'ArticleCategoryController@edit')->name('article_categories.edit');
     Route::put('article_categories/{article}', 'ArticleCategoryController@update')->name('article_categories.update');
+    Route::get('category_articles/{category}/edit', 'CategoryArticleController@edit')->name('category_articles.edit');
     Route::put('category_articles/{category}', 'CategoryArticleController@update')->name('category_articles.update');
 });

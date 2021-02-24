@@ -11,6 +11,10 @@ class ArticleSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Article::class, 200)->create();
+        factory(\App\Article::class, 200)
+            ->create()
+            ->each(function ($article) {
+                $article->categories()->save(factory(\App\Category::class)->make());
+            });
     }
 }

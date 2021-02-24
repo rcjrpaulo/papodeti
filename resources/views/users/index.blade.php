@@ -2,11 +2,9 @@
 
 @section('content')
     <div class="container">
-        <ul>
+        <h1>Usuários</h1>
 
-        </ul>
-
-        <table class="table">
+        <table class="table table-hover table-striped">
             <thead>
             <tr>
                 <th scope="col">#</th>

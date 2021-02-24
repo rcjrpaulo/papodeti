@@ -19,9 +19,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('articles', 'ArticleController');
-Route::put('article_categories/{article}', 'ArticleCategoryController@update')->name('article_categories.update');
-Route::resource('categories', 'CategoryController');
-Route::resource('comments', 'CommentController');
-Route::resource('users', 'UserController');
+Route::group(['middleware' => 'auth'], function() {
+    Route::view('/home', 'home')->name('home');
+    Route::resource('articles', 'ArticleController');
+    Route::put('article_categories/{article}', 'ArticleCategoryController@update')->name('article_categories.update');
+    Route::resource('categories', 'CategoryController');
+    Route::resource('comments', 'CommentController');
+    Route::resource('users', 'UserController');
+});

@@ -44,4 +44,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Comment::class, 'user_id', 'id');
     }
+
+    public function scopeAdmin($query)
+    {
+        return $query->where('is_admin', 1);
+    }
+
+    public function scopeNotAdmin($query)
+    {
+        return $query->where('is_admin', 0);
+    }
 }

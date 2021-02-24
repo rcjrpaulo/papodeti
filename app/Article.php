@@ -18,4 +18,9 @@ class Article extends Model
     {
         return $this->belongsToMany(Category::class, 'article_category');
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'article_id', 'id');
+    }
 }

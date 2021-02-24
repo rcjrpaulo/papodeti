@@ -55,7 +55,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        $article = $article->load('user');
+        $article->load('user');
 
         return view('articles.show', compact('article'));
     }
@@ -68,7 +68,7 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        $article = $article->load('user');
+        $article->load('user');
 
         return view('articles.edit', compact('article'));
     }

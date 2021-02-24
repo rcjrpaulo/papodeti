@@ -26,7 +26,7 @@
             </div>
 
             <a href="{{ route('users.index') }}" class="btn btn-primary">Voltar</a>
-            <button submit class="btn btn-success">Salvar</button>
+            <button type="submit" class="btn btn-success">Salvar</button>
         </form>
 
     </div>

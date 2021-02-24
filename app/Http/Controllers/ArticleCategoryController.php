@@ -16,7 +16,9 @@ class ArticleCategoryController extends Controller
      */
     public function update(Request $request, Article $article)
     {
-        $article->categories()->sync($request->categories);
+        $article->categories()->sync($request->categories ?? []);
+
+        session()->flash('success', 'Artigo atualizado com sucesso !');
 
         return redirect()->route('articles.index');
     }

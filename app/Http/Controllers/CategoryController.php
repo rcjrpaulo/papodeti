@@ -77,7 +77,7 @@ class CategoryController extends Controller
     {
         $category->update($request->only('name'));
 
-        session()->flash('success', 'Categoria criada com sucesso !');
+        session()->flash('success', 'Categoria atualizada com sucesso !');
 
         return redirect()->route('categories.index');
     }

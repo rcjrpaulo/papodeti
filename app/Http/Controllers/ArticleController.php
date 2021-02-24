@@ -84,7 +84,7 @@ class ArticleController extends Controller
     {
         $article->update($request->only('title', 'content', 'user_id'));
 
-        session()->flash('success', 'Artigo criado com sucesso !');
+        session()->flash('success', 'Artigo atualizado com sucesso !');
 
         return redirect()->route('articles.index');
     }

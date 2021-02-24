@@ -3,6 +3,7 @@
 @section('content')
     <div class="container">
         <h1>Usuários</h1>
+        <h4>Total: {{ count($users) }}</h4>
 
         <table class="table table-hover table-striped">
             <thead>

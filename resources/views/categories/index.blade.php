@@ -3,6 +3,7 @@
 @section('content')
     <div class="container">
         <h1>Categorias</h1>
+        <h4>Total: {{ count($categories) }}</h4>
 
         <a href="{{ route('categories.create') }}" class="btn btn-primary my-3">Criar</a>
 

@@ -3,6 +3,7 @@
 @section('content')
     <div class="container">
         <h1>Comentários</h1>
+        <h4>Total: {{ count($comments) }}</h4>
 
         <a href="{{ route('comments.create') }}" class="btn btn-primary my-3">Criar</a>
 

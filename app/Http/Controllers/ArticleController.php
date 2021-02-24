@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -14,7 +15,9 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        $articles = Article::select('id', 'title', 'user_id')->with('user:id,name')->get();
+
+        return View('articles.index', compact('articles'));
     }
 
     /**
@@ -24,7 +27,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return View('articles.create');
     }
 
     /**
@@ -35,7 +38,11 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Article::create($request->only('title', 'content', 'user_id'));
+
+        session()->flash('success', 'Artigo criado com sucesso !');
+
+        return redirect()->route('articles.index');
     }
 
     /**
@@ -46,7 +53,9 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        //
+        $article = $article->load('user');
+
+        return view('articles.show', compact('article'));
     }
 
     /**
@@ -57,7 +66,9 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        //
+        $article = $article->load('user');
+
+        return view('articles.edit', compact('article'));
     }
 
     /**
@@ -69,7 +80,11 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
-        //
+        $article->update($request->only('title', 'content', 'user_id'));
+
+        session()->flash('success', 'Artigo criado com sucesso !');
+
+        return redirect()->route('articles.index');
     }
 
     /**
@@ -80,6 +95,10 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        //
+        $article->delete();
+
+        session()->flash('success', 'Artigo deletado com sucesso !');
+
+        return redirect()->route('articles.index');
     }
 }

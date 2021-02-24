@@ -6,12 +6,12 @@
 
         <div class="mb-3">
             <label for="name" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="" value="{{ $user->name }}" disabled>
+            <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}" disabled>
         </div>
 
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input type="text" class="form-control" id="email" name="email" placeholder="" value="{{ $user->email }}" disabled>
+            <input type="text" class="form-control" id="email" name="email" value="{{ $user->email }}" disabled>
         </div>
 
         <div class="form-check mb-3">

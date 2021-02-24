@@ -26,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return back();
     }
 
     /**
@@ -37,7 +37,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return back();
     }
 
     /**
@@ -48,7 +48,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return View('users.show', compact('user'));
     }
 
     /**
@@ -59,7 +59,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return View('users.edit', compact('user'));
     }
 
     /**
@@ -71,7 +71,11 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $user->update($request->only('name', 'email', 'is_admin'));
+
+        session()->flash('success', 'Usuário editado com sucesso !');
+
+        return redirect()->route('users.index');
     }
 
     /**

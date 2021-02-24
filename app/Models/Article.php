@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 class Article extends Model
 {
@@ -28,5 +29,10 @@ class Article extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class, 'article_id', 'id');
+    }
+
+    public function getTituloMaiusculoAttribute()
+    {
+        return Str::upper($this->title);
     }
 }

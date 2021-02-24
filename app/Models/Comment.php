@@ -21,4 +21,16 @@ class Comment extends Model
     {
         return $this->belongsTo(Article::class, 'article_id', 'id');
     }
+
+    public function userAdmin()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id')
+            ->where('is_admin', 1);
+    }
+
+    public function userNotAdmin()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id')
+            ->where('is_admin', 0);
+    }
 }

@@ -2,13 +2,13 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Comment;
+use App\Models\Comment;
 use Faker\Generator as Faker;
 
 $factory->define(Comment::class, function (Faker $faker) {
     return [
         'content' => $faker->text,
-        'user_id' => \App\User::all()->random()->id,
-        'article_id' => \App\Article::all()->random()->id,
+        'user_id' => \App\Models\User::all()->random()->id,
+        'article_id' => \App\Models\Article::all()->random()->id,
     ];
 });

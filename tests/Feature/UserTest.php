@@ -27,4 +27,19 @@ class UserTest extends TestCase
         $this->get('/users')
         ->assertOk();
     }
+
+    /** @test */
+    public function deve_ser_possivel_visualizar_detalhes_do_usuario()
+    {
+        $user = factory(User::class)->create([
+            'name' => 'userteste',
+            'email' => 'teste@teste.com'
+        ]);
+        $this->actingAs($user);
+
+        $this->get('/users/1')
+            ->assertOk()
+            ->assertSee('userteste')
+            ->assertSee('teste@teste.com');
+    }
 }

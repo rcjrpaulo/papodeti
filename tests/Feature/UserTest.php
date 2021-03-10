@@ -46,7 +46,6 @@ class UserTest extends TestCase
     /** @test */
     public function deve_ser_possivel_atualizar_usuario()
     {
-        $this->withoutExceptionHandling();
         $user = factory(User::class)->create([
             'name' => 'nome antes',
             'email' => 'email@antes.com'
@@ -70,5 +69,30 @@ class UserTest extends TestCase
         $this->assertDatabaseMissing('users', [
             'email' => 'email@antes.com'
         ]);
+    }
+
+    /** @test */
+    public function nao_deve_ser_possivel_atualizar_usuario_sem_passar_name()
+    {
+        $user = factory(User::class)->create([
+            'name' => 'nome antes',
+            'email' => 'email@antes.com'
+        ]);
+        $this->actingAs($user);
+
+        $updateData = [
+            'name' => '',
+            'email' => 'email@depois.com',
+            'is_admin' => true
+        ];
+
+        $this->put('/users/1', $updateData)
+        ->assertStatus(302);
+
+        $this->assertDatabaseMissing('users', [
+            'email' => 'email@depois.com'
+        ]);
+
+        $this->assertDatabaseCount('users', 1);
     }
 }
